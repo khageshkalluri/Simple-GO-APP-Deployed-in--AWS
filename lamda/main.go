@@ -1,7 +1,9 @@
 package main
 
 import (
+	"dynamic/app"
 	"fmt"
+
 	"github.com/aws/aws-lambda-go/lambda"
 )
 
@@ -17,5 +19,6 @@ func Operation(details Details) (string, error) {
 }
 
 func main() {
-	lambda.Start(Operation)
+	newapp := app.NewApp()
+	lambda.Start(newapp.Api.RegisterClient)
 }
